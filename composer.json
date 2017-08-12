@@ -1,0 +1,35 @@
+{
+  "name": "setbased/abc-language-resolver-core",
+  "description": "ABC Framework: Core Language Resolver",
+  "keywords": [
+    "ABC-Framework",
+    "Language",
+    "Resolver",
+    "Core"
+  ],
+  "require": {
+    "php": ">=7.0.0",
+    "setbased/abc": "^0.10.2",
+    "setbased/abc-babel-core": "^0.10.4",
+    "setbased/abc-language-resolver": "^0.9.0"
+  },
+  "require-dev": {
+    "phing/phing": "^2.0.0",
+    "phpunit/phpunit": "^6.0.0"
+  },
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "SetBased\\Abc\\LanguageResolver\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SetBased\\Abc\\LanguageResolver\\Test\\": "test"
+    }
+  },
+  "config": {
+    "bin-dir": "bin"
+  }
+}
