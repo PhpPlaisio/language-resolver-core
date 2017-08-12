@@ -21,6 +21,7 @@ class CoreLanguageResolverTest extends TestCase
   private static $abc;
 
   //--------------------------------------------------------------------------------------------------------------------
+
   /**
    * Creates the concrete implementation of the ABC Framework.
    */
@@ -65,6 +66,18 @@ class CoreLanguageResolverTest extends TestCase
 
     $lanId = Abc::$languageResolver->getLanId();
     self::assertEquals(C::LAN_ID_EN, $lanId);
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * Test language code with country code .
+   */
+  public function testGetLanId04()
+  {
+    $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'nl-NL,en-US;q=0.7';
+
+    $lanId = Abc::$languageResolver->getLanId();
+    self::assertEquals(C::LAN_ID_NL, $lanId);
   }
 
   //--------------------------------------------------------------------------------------------------------------------
