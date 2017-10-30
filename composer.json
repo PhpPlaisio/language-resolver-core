@@ -9,9 +9,9 @@
   ],
   "require": {
     "php": ">=7.0.0",
-    "setbased/abc": "^0.10.2",
+    "setbased/abc": "^0.10.15",
     "setbased/abc-babel-core": "^0.10.4",
-    "setbased/abc-language-resolver": "^0.9.0"
+    "setbased/abc-language-resolver": "^1.0.0"
   },
   "require-dev": {
     "phing/phing": "^2.0.0",
@@ -26,7 +26,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "SetBased\\Abc\\LanguageResolver\\Test\\": "test"
+      "SetBased\\Abc\\LanguageResolver\\Test\\": "test/"
     }
   },
   "config": {
