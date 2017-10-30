@@ -1,4 +1,5 @@
 /.idea/
 /bin/
+/doc/
 /composer.lock
-/vendor
+/vendor/
