@@ -82,6 +82,18 @@ class CoreLanguageResolverTest extends TestCase
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
+   * Test language code with country code .
+   */
+  public function testGetLanId05()
+  {
+    $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'nl_be,nl_nl,en-US;q=0.7';
+
+    $lanId = Abc::$languageResolver->getLanId();
+    self::assertEquals(C::LAN_ID_NL_BE, $lanId);
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
    * Test language code is Chinese.
    */
   public function testGetLanIdChinese01()

@@ -59,17 +59,21 @@ class CoreLanguageResolver implements LanguageResolver
     // If HTTP_ACCEPT_LANGUAGE is not set or empty return the default language.
     if (empty($codes)) $this->lanIdDefault;
 
-    $languages = Abc::$DL->abcBabelLanguageGetAllCodes();
+    $map = Abc::$babel->getInternalLanguageMap();
 
     // Try to find the language code. Examples: en, en-US, zh, zh-Hans.
-    foreach($codes as $code)
+    // BTW We assume HTTP_ACCEPT_LANGUAGE is sorted properly.
+    foreach($codes as &$code)
     {
-      // Remove sorting weight. BTW We assume HTTP_ACCEPT_LANGUAGE is sorted properly.
-      $code = strtok($code, ';');
+      // The official language code for Dutch in the Netherlands is nl-NL (with hyphen). But in practice we encounter
+      // nl_NL, nl_nl, nl-nl. Therefore, internal language codes are in lower case and with hyphen.
 
-      if (isset($languages[$code]))
+      // Remove sorting weight, replace underscore with dash, and convert to lower case.
+      $code = strtolower(str_replace('_', '-', strtok($code, ';')));
+
+      if (isset($map[$code]))
       {
-        $this->lanId = $languages[$code]['lan_id'];
+        $this->lanId = $map[$code];
 
         return;
       }
@@ -78,15 +82,11 @@ class CoreLanguageResolver implements LanguageResolver
     // We did not find the language code. Try without county code. Examples: en, zh.
     foreach($codes as $code)
     {
-      $code = strtok($code, ';');
-
-      if (strpos($code, '-')===false) continue;
-
       $code = substr($code, 0, 2);
 
-      if (isset($languages[$code]))
+      if (isset($map[$code]))
       {
-        $this->lanId = $languages[$code]['lan_id'];
+        $this->lanId = $map[$code];
 
         return;
       }

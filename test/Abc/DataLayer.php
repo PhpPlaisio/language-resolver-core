@@ -13,14 +13,14 @@ class DataLayer
    *
    * @return \array[]
    */
-  public function abcBabelLanguageGetAllCodes()
+  public function abcBabelCoreInternalCodeMap()
   {
-    return ['en'      => ['lan_id' => C::LAN_ID_EN, 'lan_code' => 'en'],
-            'nl'      => ['lan_id' => C::LAN_ID_NL, 'lan_code' => 'nl'],
-            'ru'      => ['lan_id' => C::LAN_ID_RU, 'lan_code' => 'ru'],
-            'nl-BE'   => ['lan_id' => C::LAN_ID_NL_BE, 'lan_code' => 'nl-BE'],
-            'zh-Hant' => ['lan_id' => C::LAN_ID_ZH_HANT, 'lan_code' => 'zh-Hant'],
-            'zh' =>      ['lan_id' => C::LAN_ID_ZH, 'lan_code' => 'zh']];
+    return ['en'      => C::LAN_ID_EN,
+            'nl'      => C::LAN_ID_NL,
+            'ru'      => C::LAN_ID_RU,
+            'nl-be'   => C::LAN_ID_NL_BE,
+            'zh-hant' => C::LAN_ID_ZH_HANT,
+            'zh'      => C::LAN_ID_ZH];
   }
 
   //--------------------------------------------------------------------------------------------------------------------

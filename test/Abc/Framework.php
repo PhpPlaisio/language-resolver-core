@@ -3,9 +3,8 @@
 namespace SetBased\Abc\LanguageResolver\Test\Abc;
 
 use SetBased\Abc\Abc;
-use SetBased\Abc\ErrorLogger\ErrorLogger;
+use SetBased\Abc\Babel\CoreBabel;
 use SetBased\Abc\LanguageResolver\CoreLanguageResolver;
-use SetBased\Exception\RuntimeException;
 
 /**
  * Mock framework for testing purposes.
@@ -21,6 +20,7 @@ class Framework extends Abc
     parent::__construct();
 
     self::$DL               = new DataLayer();
+    self::$babel            = new CoreBabel();
     self::$languageResolver = new CoreLanguageResolver(C::LAN_ID_EN);
   }
 

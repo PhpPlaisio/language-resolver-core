@@ -9,8 +9,8 @@
   ],
   "require": {
     "php": ">=7.0.0",
-    "setbased/abc": "^0.10.15",
-    "setbased/abc-babel-core": "^0.10.4",
+    "setbased/abc": "^0.10.31",
+    "setbased/abc-babel-core": "^0.10.8",
     "setbased/abc-language-resolver": "^1.0.0"
   },
   "require-dev": {
@@ -30,6 +30,6 @@
     }
   },
   "config": {
-    "bin-dir": "bin"
+    "bin-dir": "bin/"
   }
 }
