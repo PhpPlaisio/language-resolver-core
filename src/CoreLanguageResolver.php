@@ -11,18 +11,18 @@ class CoreLanguageResolver implements LanguageResolver
 {
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * The ID of the language when to requested language can not be resolved.
-   *
-   * @var int
-   */
-  private $lanIdDefault;
-
-  /**
    * The ID of the language.
    *
    * @var int|null
    */
   private $lanId;
+
+  /**
+   * The ID of the language when to requested language can not be resolved.
+   *
+   * @var int
+   */
+  private $lanIdDefault;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -63,7 +63,7 @@ class CoreLanguageResolver implements LanguageResolver
 
     // Try to find the language code. Examples: en, en-US, zh, zh-Hans.
     // BTW We assume HTTP_ACCEPT_LANGUAGE is sorted properly.
-    foreach($codes as &$code)
+    foreach ($codes as &$code)
     {
       // The official language code for Dutch in the Netherlands is nl-NL (with hyphen). But in practice we encounter
       // nl_NL, nl_nl, nl-nl. Therefore, internal language codes are in lower case and with hyphen.
@@ -80,7 +80,7 @@ class CoreLanguageResolver implements LanguageResolver
     }
 
     // We did not find the language code. Try without county code. Examples: en, zh.
-    foreach($codes as $code)
+    foreach ($codes as $code)
     {
       $code = substr($code, 0, 2);
 
