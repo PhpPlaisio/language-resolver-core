@@ -1,5 +1,5 @@
 <?php
-//----------------------------------------------------------------------------------------------------------------------
+
 namespace SetBased\Abc\LanguageResolver\Test\Abc;
 
 use SetBased\Abc\Abc;

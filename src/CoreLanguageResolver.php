@@ -30,7 +30,7 @@ class CoreLanguageResolver implements LanguageResolver
    *
    * @param int $lanIdDefault The ID of the language when to requested language can not be resolved.
    */
-  public function __construct($lanIdDefault)
+  public function __construct(int $lanIdDefault)
   {
     $this->lanIdDefault = $lanIdDefault;
   }
@@ -41,7 +41,7 @@ class CoreLanguageResolver implements LanguageResolver
    *
    * @return int
    */
-  public function getLanId()
+  public function getLanId(): int
   {
     if ($this->lanId===null) $this->resolveLanId();
 
@@ -52,7 +52,7 @@ class CoreLanguageResolver implements LanguageResolver
   /**
    * Resolves the ID of the language in which the response must be drafted.
    */
-  private function resolveLanId()
+  private function resolveLanId(): void
   {
     $codes = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? null);
 

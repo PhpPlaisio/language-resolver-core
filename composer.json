@@ -8,10 +8,10 @@
     "Core"
   ],
   "require": {
-    "php": ">=7.0.0",
-    "setbased/abc": "^0.10.31",
+    "php": ">=7.1.0",
+    "setbased/abc": "^0.10.36",
     "setbased/abc-babel-core": "^0.10.8",
-    "setbased/abc-language-resolver": "^1.0.0"
+    "setbased/abc-language-resolver": "^2.0.0"
   },
   "require-dev": {
     "phing/phing": "^2.0.0",
