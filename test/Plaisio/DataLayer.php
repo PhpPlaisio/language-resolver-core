@@ -1,6 +1,7 @@
 <?php
+declare(strict_types=1);
 
-namespace SetBased\Abc\LanguageResolver\Test\Abc;
+namespace Plaisio\LanguageResolver\Test\Plaisio;
 
 /**
  * Mock up data layer for testing purposes.

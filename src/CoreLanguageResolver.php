@@ -1,8 +1,9 @@
 <?php
+declare(strict_types=1);
 
-namespace SetBased\Abc\LanguageResolver;
+namespace Plaisio\LanguageResolver;
 
-use SetBased\Abc\Abc;
+use Plaisio\Kernel\Nub;
 
 /**
  * Class for resolving the language in which a response must be drafted based on $_SERVER['HTTP_ACCEPT_LANGUAGE'].
@@ -54,12 +55,12 @@ class CoreLanguageResolver implements LanguageResolver
    */
   private function resolveLanId(): void
   {
-    $codes = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? null);
+    $codes = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '');
 
     // If HTTP_ACCEPT_LANGUAGE is not set or empty return the default language.
     if (empty($codes)) $this->lanIdDefault;
 
-    $map = Abc::$babel->getInternalLanguageMap();
+    $map = Nub::$babel->getInternalLanguageMap();
 
     // Try to find the language code. Examples: en, en-US, zh, zh-Hans.
     // BTW We assume HTTP_ACCEPT_LANGUAGE is sorted properly.

@@ -1,32 +1,30 @@
 {
-  "name": "setbased/abc-language-resolver-core",
-  "description": "ABC-Framework: Core Language Resolver",
+  "name": "plaisio/language-resolver-core",
+  "description": "PhpPlaisio: Core Language Resolver",
   "keywords": [
-    "ABC-Framework",
-    "Language",
-    "Resolver",
+    "PhpPlaisio",
+    "Language Resolver",
     "Core"
   ],
+  "license": "MIT",
   "require": {
     "php": ">=7.1.0",
-    "setbased/abc": "^0.10.36",
-    "setbased/abc-babel-core": "^0.10.8",
-    "setbased/abc-language-resolver": "^2.0.0"
+    "plaisio/babel-core": "^1.0.0.",
+    "plaisio/kernel": "^1.0.0",
+    "plaisio/language-resolver": "^1.0.0"
   },
   "require-dev": {
     "phing/phing": "^2.0.0",
     "phpunit/phpunit": "^6.0.0"
   },
-  "type": "library",
-  "license": "MIT",
   "autoload": {
     "psr-4": {
-      "SetBased\\Abc\\LanguageResolver\\": "src/"
+      "Plaisio\\LanguageResolver\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "SetBased\\Abc\\LanguageResolver\\Test\\": "test/"
+      "Plaisio\\LanguageResolver\\Test\\": "test/"
     }
   },
   "config": {

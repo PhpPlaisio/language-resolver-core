@@ -1,15 +1,16 @@
 <?php
+declare(strict_types=1);
 
-namespace SetBased\Abc\LanguageResolver\Test\Abc;
+namespace Plaisio\LanguageResolver\Test\Plaisio;
 
-use SetBased\Abc\Abc;
-use SetBased\Abc\Babel\CoreBabel;
-use SetBased\Abc\LanguageResolver\CoreLanguageResolver;
+use Plaisio\Babel\CoreBabel;
+use Plaisio\Kernel\Nub;
+use Plaisio\LanguageResolver\CoreLanguageResolver;
 
 /**
  * Mock framework for testing purposes.
  */
-class Framework extends Abc
+class Framework extends Nub
 {
   //--------------------------------------------------------------------------------------------------------------------
   /**

@@ -2,4 +2,5 @@
 /bin/
 /doc/
 /composer.lock
+/test/coverage.xml
 /vendor/
