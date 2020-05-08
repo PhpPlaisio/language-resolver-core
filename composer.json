@@ -9,8 +9,8 @@
   "license": "MIT",
   "require": {
     "php": ">=7.3",
-    "plaisio/babel-core": "^1.1",
-    "plaisio/kernel": "^1.1",
+    "plaisio/babel-core": "^1.2",
+    "plaisio/kernel": "^2.0",
     "plaisio/language-resolver": "^1.1"
   },
   "require-dev": {

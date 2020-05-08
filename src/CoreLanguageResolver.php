@@ -60,7 +60,7 @@ class CoreLanguageResolver implements LanguageResolver
     // If HTTP_ACCEPT_LANGUAGE is not set or empty return the default language.
     if (empty($codes)) $this->lanIdDefault;
 
-    $map = Nub::$babel->getInternalLanguageMap();
+    $map = Nub::$nub->babel->getInternalLanguageMap();
 
     // Try to find the language code. Examples: en, en-US, zh, zh-Hans.
     // BTW We assume HTTP_ACCEPT_LANGUAGE is sorted properly.

@@ -3,26 +3,25 @@ declare(strict_types=1);
 
 namespace Plaisio\LanguageResolver\Test\Plaisio;
 
-use Plaisio\Babel\CoreBabel;
-use Plaisio\Kernel\Nub;
-use Plaisio\LanguageResolver\CoreLanguageResolver;
-
 /**
- * Mock framework for testing purposes.
+ * Mock up data layer for testing purposes.
  */
-class Framework extends Nub
+class TestDataLayer
 {
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Object constructor.
+   * Selects all language codes as map from language code to language ID.
+   *
+   * @return \array[]
    */
-  public function __construct()
+  public function abcBabelCoreInternalCodeMap()
   {
-    parent::__construct();
-
-    self::$DL               = new DataLayer();
-    self::$babel            = new CoreBabel();
-    self::$languageResolver = new CoreLanguageResolver(C::LAN_ID_EN);
+    return ['en'      => C::LAN_ID_EN,
+            'nl'      => C::LAN_ID_NL,
+            'ru'      => C::LAN_ID_RU,
+            'nl-be'   => C::LAN_ID_NL_BE,
+            'zh-hant' => C::LAN_ID_ZH_HANT,
+            'zh'      => C::LAN_ID_ZH];
   }
 
   //--------------------------------------------------------------------------------------------------------------------
