@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace Plaisio\LanguageResolver;
 
-use Plaisio\Kernel\Nub;
+use Plaisio\PlaisioObject;
 
 /**
  * Class for resolving the language in which a response must be drafted based on $_SERVER['HTTP_ACCEPT_LANGUAGE'].
  */
-class CoreLanguageResolver implements LanguageResolver
+class CoreLanguageResolver extends PlaisioObject implements LanguageResolver
 {
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -29,10 +29,13 @@ class CoreLanguageResolver implements LanguageResolver
   /**
    * Object constructor.
    *
-   * @param int $lanIdDefault The ID of the language when to requested language can not be resolved.
+   * @param PlaisioObject $object       The parent PhpPlaisio object.
+   * @param int           $lanIdDefault The ID of the language when to requested language can not be resolved.
    */
-  public function __construct(int $lanIdDefault)
+  public function __construct(PlaisioObject $object, int $lanIdDefault)
   {
+    parent::__construct($object);
+
     $this->lanIdDefault = $lanIdDefault;
   }
 
@@ -60,7 +63,7 @@ class CoreLanguageResolver implements LanguageResolver
     // If HTTP_ACCEPT_LANGUAGE is not set or empty return the default language.
     if (empty($codes)) $this->lanIdDefault;
 
-    $map = Nub::$nub->babel->getInternalLanguageMap();
+    $map = $this->nub->babel->getInternalLanguageMap();
 
     // Try to find the language code. Examples: en, en-US, zh, zh-Hans.
     // BTW We assume HTTP_ACCEPT_LANGUAGE is sorted properly.

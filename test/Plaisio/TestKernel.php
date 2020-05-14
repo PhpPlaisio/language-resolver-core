@@ -5,24 +5,15 @@ namespace Plaisio\LanguageResolver\Test\Plaisio;
 
 use Plaisio\Babel\Babel;
 use Plaisio\Babel\CoreBabel;
-use Plaisio\Kernel\Nub;
 use Plaisio\LanguageResolver\CoreLanguageResolver;
 use Plaisio\LanguageResolver\LanguageResolver;
+use Plaisio\PlaisioKernel;
 
 /**
  * Mock framework for testing purposes.
  */
-class TestKernel extends Nub
+class TestKernel extends PlaisioKernel
 {
-  //--------------------------------------------------------------------------------------------------------------------
-  /**
-   * Object constructor.
-   */
-  public function __construct()
-  {
-    parent::__construct();
-  }
-
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * Returns the helper object for retrieving linguistic entities.
@@ -31,7 +22,7 @@ class TestKernel extends Nub
    */
   protected function getBabel(): Babel
   {
-    return new CoreBabel();
+    return new CoreBabel($this);
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -51,7 +42,7 @@ class TestKernel extends Nub
    */
   protected function getLanguageResolver(): LanguageResolver
   {
-    return new CoreLanguageResolver(C::LAN_ID_EN);
+    return new CoreLanguageResolver($this, C::LAN_ID_EN);
   }
 
   //--------------------------------------------------------------------------------------------------------------------

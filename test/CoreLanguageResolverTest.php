@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace Plaisio\LanguageResolver\Test;
 
 use PHPUnit\Framework\TestCase;
-use Plaisio\Kernel\Nub;
 use Plaisio\LanguageResolver\Test\Plaisio\C;
 use Plaisio\LanguageResolver\Test\Plaisio\TestKernel;
+use Plaisio\PlaisioKernel;
 
 /**
  * Test cases for class CoreBabel.
@@ -17,9 +17,9 @@ class CoreLanguageResolverTest extends TestCase
   /**
    * Our concrete instance of Abc.
    *
-   * @var Nub
+   * @var PlaisioKernel
    */
-  private static $nub;
+  private $kernel;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -27,9 +27,7 @@ class CoreLanguageResolverTest extends TestCase
    */
   public function setUp(): void
   {
-    parent::setUpBeforeClass();
-
-    self::$nub = new TestKernel();
+    $this->kernel = new TestKernel();
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -40,7 +38,7 @@ class CoreLanguageResolverTest extends TestCase
   {
     $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'nl-BE,en-US;q=0.7,en;q=0.3';
 
-    $lanId = Nub::$nub->languageResolver->getLanId();
+    $lanId = $this->kernel->languageResolver->getLanId();
     self::assertEquals(C::LAN_ID_NL_BE, $lanId);
   }
 
@@ -52,7 +50,7 @@ class CoreLanguageResolverTest extends TestCase
   {
     $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'nl,de;q=0.8,hu;q=0.6,en-US;q=0.4,en;q=0.2';
 
-    $lanId = Nub::$nub->languageResolver->getLanId();
+    $lanId = $this->kernel->languageResolver->getLanId();
     self::assertEquals(C::LAN_ID_NL, $lanId);
   }
 
@@ -64,7 +62,7 @@ class CoreLanguageResolverTest extends TestCase
   {
     $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'fr-CH,fr;q=0.8,en-US;q=0.6,en;q=0.4';
 
-    $lanId = Nub::$nub->languageResolver->getLanId();
+    $lanId = $this->kernel->languageResolver->getLanId();
     self::assertEquals(C::LAN_ID_EN, $lanId);
   }
 
@@ -76,7 +74,7 @@ class CoreLanguageResolverTest extends TestCase
   {
     $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'nl-NL,en-US;q=0.7';
 
-    $lanId = Nub::$nub->languageResolver->getLanId();
+    $lanId = $this->kernel->languageResolver->getLanId();
     self::assertEquals(C::LAN_ID_NL, $lanId);
   }
 
@@ -88,7 +86,7 @@ class CoreLanguageResolverTest extends TestCase
   {
     $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'nl_be,nl_nl,en-US;q=0.7';
 
-    $lanId = Nub::$nub->languageResolver->getLanId();
+    $lanId = $this->kernel->languageResolver->getLanId();
     self::assertEquals(C::LAN_ID_NL_BE, $lanId);
   }
 
@@ -100,7 +98,7 @@ class CoreLanguageResolverTest extends TestCase
   {
     $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'zh-CN,zh,en-US,en;q=0';
 
-    $lanId = Nub::$nub->languageResolver->getLanId();
+    $lanId = $this->kernel->languageResolver->getLanId();
     self::assertEquals(C::LAN_ID_ZH, $lanId);
   }
 
@@ -112,7 +110,7 @@ class CoreLanguageResolverTest extends TestCase
   {
     $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'zh-Hant-HK,zh-Hant;q=0.8,en-US;q=0.5,en;q=0.3';
 
-    $lanId = Nub::$nub->languageResolver->getLanId();
+    $lanId = $this->kernel->languageResolver->getLanId();
     self::assertEquals(C::LAN_ID_ZH_HANT, $lanId);
   }
 
@@ -124,7 +122,7 @@ class CoreLanguageResolverTest extends TestCase
   {
     $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'zh-Hans-HK,zh-Hans;q=0.8,en-US;q=0.5,en;q=0.3';
 
-    $lanId = Nub::$nub->languageResolver->getLanId();
+    $lanId = $this->kernel->languageResolver->getLanId();
     self::assertEquals(C::LAN_ID_EN, $lanId);
   }
 
@@ -136,7 +134,7 @@ class CoreLanguageResolverTest extends TestCase
   {
     $_SERVER['HTTP_ACCEPT_LANGUAGE'] = null;
 
-    $lanId = Nub::$nub->languageResolver->getLanId();
+    $lanId = $this->kernel->languageResolver->getLanId();
     self::assertEquals(C::LAN_ID_EN, $lanId);
   }
 
@@ -148,7 +146,7 @@ class CoreLanguageResolverTest extends TestCase
   {
     unset($_SERVER['HTTP_ACCEPT_LANGUAGE']);
 
-    $lanId = Nub::$nub->languageResolver->getLanId();
+    $lanId = $this->kernel->languageResolver->getLanId();
     self::assertEquals(C::LAN_ID_EN, $lanId);
   }
 
@@ -160,7 +158,7 @@ class CoreLanguageResolverTest extends TestCase
   {
     $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'de-CH,de;q=0.5';
 
-    $lanId = Nub::$nub->languageResolver->getLanId();
+    $lanId = $this->kernel->languageResolver->getLanId();
     self::assertEquals(C::LAN_ID_EN, $lanId);
   }
 
