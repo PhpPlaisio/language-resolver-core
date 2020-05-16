@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Plaisio\LanguageResolver;
 
+use Plaisio\PlaisioInterface;
 use Plaisio\PlaisioObject;
 
 /**
@@ -29,10 +30,10 @@ class CoreLanguageResolver extends PlaisioObject implements LanguageResolver
   /**
    * Object constructor.
    *
-   * @param PlaisioObject $object       The parent PhpPlaisio object.
-   * @param int           $lanIdDefault The ID of the language when to requested language can not be resolved.
+   * @param PlaisioInterface $object       The parent PhpPlaisio object.
+   * @param int              $lanIdDefault The ID of the language when to requested language can not be resolved.
    */
-  public function __construct(PlaisioObject $object, int $lanIdDefault)
+  public function __construct(PlaisioInterface $object, int $lanIdDefault)
   {
     parent::__construct($object);
 
