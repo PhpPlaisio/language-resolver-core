@@ -8,6 +8,8 @@ use Plaisio\Babel\CoreBabel;
 use Plaisio\LanguageResolver\CoreLanguageResolver;
 use Plaisio\LanguageResolver\LanguageResolver;
 use Plaisio\PlaisioKernel;
+use Plaisio\Request\CoreRequest;
+use Plaisio\Request\Request;
 
 /**
  * Mock framework for testing purposes.
@@ -31,7 +33,7 @@ class TestKernel extends PlaisioKernel
    *
    * @return Object
    */
-  protected function getDL(): Object
+  protected function getDL(): object
   {
     return new TestDataLayer();
   }
@@ -43,6 +45,15 @@ class TestKernel extends PlaisioKernel
   protected function getLanguageResolver(): LanguageResolver
   {
     return new CoreLanguageResolver($this, C::LAN_ID_EN);
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * @return Request
+   */
+  protected function getRequest(): Request
+  {
+    return new CoreRequest();
   }
 
   //--------------------------------------------------------------------------------------------------------------------

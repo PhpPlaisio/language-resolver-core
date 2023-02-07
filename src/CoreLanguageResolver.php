@@ -17,16 +17,17 @@ class CoreLanguageResolver extends PlaisioObject implements LanguageResolver
    *
    * @var int|null
    */
-  private $lanId;
+  private ?int $lanId = null;
 
   /**
-   * The ID of the language when to requested language can not be resolved.
+   * The ID of the language when the requested language can not be resolved.
    *
    * @var int
    */
-  private $lanIdDefault;
+  private int $lanIdDefault;
 
   //--------------------------------------------------------------------------------------------------------------------
+
   /**
    * Object constructor.
    *
@@ -48,7 +49,10 @@ class CoreLanguageResolver extends PlaisioObject implements LanguageResolver
    */
   public function getLanId(): int
   {
-    if ($this->lanId===null) $this->resolveLanId();
+    if ($this->lanId===null)
+    {
+      $this->resolveLanId();
+    }
 
     return $this->lanId;
   }
@@ -59,17 +63,26 @@ class CoreLanguageResolver extends PlaisioObject implements LanguageResolver
    */
   private function resolveLanId(): void
   {
-    $codes = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '');
+    $codes = explode(',', $this->nub->request->getAcceptLanguage() ?? '');
 
     // If HTTP_ACCEPT_LANGUAGE is not set or empty return the default language.
-    if (empty($codes)) $this->lanIdDefault;
+    if (empty($codes))
+    {
+      $this->lanId = $this->lanIdDefault;
+
+      return;
+    }
 
     $map = $this->nub->babel->getInternalLanguageMap();
 
     // Try to find the language code. Examples: en, en-US, zh, zh-Hans.
     // BTW We assume HTTP_ACCEPT_LANGUAGE is sorted properly.
-    foreach ($codes as &$code)
+    foreach ($codes as $code)
     {
+      if ($code==='')
+      {
+        continue;
+      }
       // The official language code for Dutch in the Netherlands is nl-NL (with hyphen). But in practice we encounter
       // nl_NL, nl_nl, nl-nl. Therefore, internal language codes are in lower case and with hyphen.
 

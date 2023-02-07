@@ -12,9 +12,9 @@ class TestDataLayer
   /**
    * Selects all language codes as map from language code to language ID.
    *
-   * @return \array[]
+   * @return array[]
    */
-  public function abcBabelCoreInternalCodeMap()
+  public function abcBabelCoreInternalCodeMap(): array
   {
     return ['en'      => C::LAN_ID_EN,
             'nl'      => C::LAN_ID_NL,
