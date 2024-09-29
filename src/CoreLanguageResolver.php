@@ -27,12 +27,11 @@ class CoreLanguageResolver extends PlaisioObject implements LanguageResolver
   private int $lanIdDefault;
 
   //--------------------------------------------------------------------------------------------------------------------
-
   /**
    * Object constructor.
    *
    * @param PlaisioInterface $object       The parent PhpPlaisio object.
-   * @param int              $lanIdDefault The ID of the language when to requested language can not be resolved.
+   * @param int              $lanIdDefault The ID of the language when the requested language can not be resolved.
    */
   public function __construct(PlaisioInterface $object, int $lanIdDefault)
   {
@@ -63,10 +62,10 @@ class CoreLanguageResolver extends PlaisioObject implements LanguageResolver
    */
   private function resolveLanId(): void
   {
-    $codes = explode(',', $this->nub->request->getAcceptLanguage() ?? '');
+    $languages = $this->nub->request->acceptLanguages;
 
     // If HTTP_ACCEPT_LANGUAGE is not set or empty return the default language.
-    if (empty($codes))
+    if (empty($languages))
     {
       $this->lanId = $this->lanIdDefault;
 
@@ -77,7 +76,7 @@ class CoreLanguageResolver extends PlaisioObject implements LanguageResolver
 
     // Try to find the language code. Examples: en, en-US, zh, zh-Hans.
     // BTW We assume HTTP_ACCEPT_LANGUAGE is sorted properly.
-    foreach ($codes as $code)
+    foreach (array_keys($languages) as $code)
     {
       if ($code==='')
       {
@@ -98,10 +97,9 @@ class CoreLanguageResolver extends PlaisioObject implements LanguageResolver
     }
 
     // We did not find the language code. Try without county code. Examples: en, zh.
-    foreach ($codes as $code)
+    foreach (array_keys($languages) as $code)
     {
       $code = substr($code, 0, 2);
-
       if (isset($map[$code]))
       {
         $this->lanId = $map[$code];

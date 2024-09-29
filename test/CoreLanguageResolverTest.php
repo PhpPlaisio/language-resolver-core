@@ -22,6 +22,7 @@ class CoreLanguageResolverTest extends TestCase
   private PlaisioKernel $kernel;
 
   //--------------------------------------------------------------------------------------------------------------------
+
   /**
    * Creates the concrete implementation of the ABC Framework.
    */
@@ -148,6 +149,18 @@ class CoreLanguageResolverTest extends TestCase
 
     $lanId = $this->kernel->languageResolver->getLanId();
     self::assertEquals(C::LAN_ID_EN, $lanId);
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * Test language code without country.
+   */
+  public function testGetLanIdOrderAndWeightDifferent(): void
+  {
+    $_SERVER['HTTP_ACCEPT_LANGUAGE'] = 'en-GB;q=0.2,en-US;q=0.4,hu;q=0.6,de-DE;q=0.8,nl-NL;q=1.0';
+
+    $lanId = $this->kernel->languageResolver->getLanId();
+    self::assertEquals(C::LAN_ID_NL, $lanId);
   }
 
   //--------------------------------------------------------------------------------------------------------------------
