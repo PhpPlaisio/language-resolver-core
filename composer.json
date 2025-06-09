@@ -9,16 +9,16 @@
   "license": "MIT",
   "require": {
     "php": ">=8.3",
-    "plaisio/babel-core": "^2.0.0",
-    "plaisio/kernel": "^3.2.1",
-    "plaisio/language-resolver": "^1.3.0",
-    "plaisio/request": "^1.0.0"
+    "plaisio/babel-core": "^2.2.0",
+    "plaisio/kernel": "^3.3.0",
+    "plaisio/language-resolver": "^1.4.0",
+    "plaisio/request": "^1.0.1"
   },
   "require-dev": {
     "phing/phing": "^3.0.1",
     "phpunit/phpunit": "^11.5.22",
-    "plaisio/console-kernel": "^1.0.1",
-    "plaisio/request-core": "^1.0.0"
+    "plaisio/console-kernel": "^1.2.0",
+    "plaisio/request-core": "^1.1.0"
   },
   "autoload": {
     "psr-4": {
