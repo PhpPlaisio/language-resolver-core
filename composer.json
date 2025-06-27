@@ -10,15 +10,15 @@
   "require": {
     "php": ">=8.3",
     "plaisio/babel-core": "^2.2.0",
-    "plaisio/kernel": "^3.3.0",
+    "plaisio/kernel": "^3.3.1",
     "plaisio/language-resolver": "^1.4.0",
-    "plaisio/request": "^1.0.1"
+    "plaisio/request": "^2.0.0"
   },
   "require-dev": {
     "phing/phing": "^3.0.1",
-    "phpunit/phpunit": "^11.5.22",
+    "phpunit/phpunit": "^11.5.25",
     "plaisio/console-kernel": "^1.2.0",
-    "plaisio/request-core": "^1.1.0"
+    "plaisio/request-core": "^2.0.0"
   },
   "autoload": {
     "psr-4": {
