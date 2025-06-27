@@ -80,7 +80,7 @@ class CoreLanguageResolver extends PlaisioObject implements LanguageResolver
       {
         continue;
       }
-      // The official language code for Dutch in the Netherlands is nl-NL (with hyphen). But in practice we encounter
+      // The official language code for Dutch in the Netherlands is nl-NL (with hyphen). But in practice, we encounter
       // nl_NL, nl_nl, nl-nl. Therefore, internal language codes are in lower case and with hyphen.
 
       // Remove sorting weight, replace underscore with dash, and convert to lower case.
